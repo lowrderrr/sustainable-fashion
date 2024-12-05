@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Flower Map to Pie Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        canvas {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        #flowerCanvas {
+            transition: transform 1s ease-out;
+        }
+        #pieCanvas {
+            display: none;
+            transition: transform 1s ease-out;
+        }
+        .container {
+            position: relative;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Flower Map to Pie Chart</h1>
+    
+    <div class="container">
+        <canvas id="flowerCanvas" width="400" height="400"></canvas>
+        <canvas id="pieCanvas" width="400" height="400"></canvas>
+    </div>
+
+    <button class="button" onclick="transitionToPieChart()">Show Pie Chart</button>
+
+    <script>
+        // Flower Map (Radar Chart) Configuration
+        var ctxFlower = document.getElementById('flowerCanvas').getContext('2d');
+        var flowerChart = new Chart(ctxFlower, {
+            type: 'radar',
+            data: {
+            labels: ['United States', 'China', 'United Kingdom', 'Rep. of Korea', 'Germany', 'Pakistan', 'United Arab Emirates', 'Netherlands', 'Poland', 'Canada'],
+                datasets: [{
+                    label: 'Sustainable Fashion Practices',
+                    data: [1026.5, 911.7, 454, 374.8, 355.7,310,278.6,255.8,224.2,169.3],
+                    backgroundColor: 'rgba(63, 81, 181, 0.2)',
+                    borderColor: 'rgba(63, 81, 181, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(63, 81, 181, 1)',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                scale: {
+                    ticks: {
+                        beginAtZero: false,
+                        max: 50
+                    }
+                },
+                responsive: false,
+                maintainAspectRatio: false
+            }
+        });
+
+        //bar graph configuration
+
+        
+
+        // Pie Chart Configuration (Based on your pieChart data)
+        var pieChartData = {
+            labels: ['Cotton', 'Polyester', 'Animal Fibre', 'Polyamide', 'Other synthetics','Other natural plant based','Manmade Cellulosic Fibers'],
+            datasets: [{
+                label: 'leading exporters of worn clothing worldwide',
+                data: [40, 30, 20, 25, 15],
+                backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56', '#4caf50', '#f1c40f'],
+                borderColor: '#fff',
+                borderWidth: 1
+            }]
+        };
+
+        var ctxPie = document.getElementById('pieCanvas').getContext('2d');
+        var pieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: pieChartData,
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        enabled: true
+                    },
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+
+        // Function to transition from flower map (radar) to pie chart
+        function transitionToPieChart() {
+            // Hide the flower chart and show the pie chart
+            document.getElementById('flowerCanvas').style.transform = 'scale(0)';
+            document.getElementById('flowerCanvas').style.display = 'none';
+            
+            document.getElementById('pieCanvas').style.transform = 'scale(1)';
+            document.getElementById('pieCanvas').style.display = 'block';
+        }
+
+    </script>
+</body>
+</html>v
