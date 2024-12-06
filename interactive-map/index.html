@@ -151,7 +151,7 @@
         <canvas id="flowerCanvas" width="400" height="400"></canvas>
         <canvas id="pieCanvas" width="400" height="400"></canvas>
     </div>
-    <button class="button" onclick="transitionToPieChart()">Show Pie Chart</button>
+    <button class="button" onclick="transitionToPieChart()">compnay contribution</button>
 
     <script>
         // Flower Map (Radar Chart) Configuration
@@ -369,6 +369,9 @@
 
         // Function to transition from flower map (radar) to pie chart
         function myStackedAreaChart() {
+
+             document.getElementById('myStackedAreaChart').style.transform='scale(0)';
+          document.getElementById('myStackedAreaChart').style.display='none';
             // Hide the flower chart and show the pie chart
             document.getElementById('flowerCanvas').style.transform = 'scale(0)';
             document.getElementById('flowerCanvas').style.display = 'none';
@@ -377,9 +380,7 @@
             document.getElementById('pieCanvas').style.display = 'block';
 
             // Get the canvas element to draw the chart
-          document.getElementById('myStackedAreaChart').style.transform='scale(0)';
-          document.getElementById('myStackedAreaChart').style.display='none';
-        }
+          }
 
         
 
