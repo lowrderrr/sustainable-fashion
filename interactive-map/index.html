@@ -288,14 +288,12 @@
         // Function to transition from flower map (radar) to pie chart
         function myStackedAreaChart() {
 
-             document.getElementById('myStackedAreaChart').style.transform='scale(1)';
-          document.getElementById('myStackedAreaChart').style.display='block';
             // Hide the flower chart and show the pie chart
             document.getElementById('flowerCanvas').style.transform = 'scale(0)';
             document.getElementById('flowerCanvas').style.display = 'none';
             
-            document.getElementById('pieCanvas').style.transform = 'scale(0)';
-            document.getElementById('pieCanvas').style.display = 'none';
+            document.getElementById('pieCanvas').style.transform = 'scale(1)';
+            document.getElementById('pieCanvas').style.display = 'block';
 
             // Get the canvas element to draw the chart
           }
